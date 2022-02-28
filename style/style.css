@@ -4,3 +4,10 @@
     border-radius: 5px;
     border: 0px;
 }
+.primary{
+    color: blueviolet;
+}
+.primary2{
+    color: coral;
+    font-weight: 700;
+}
