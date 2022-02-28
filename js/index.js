@@ -8,15 +8,9 @@ const searchPhone = () =>{
     searchFild.value = '';
 
     // validation chack 
-    if(searchText == false){
-        errorMsg.style.display='inline';
-    }
-
-    else{
-        fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
+    fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
         .then(res => res.json())
-        .then(data => displaySearch(data.data));
-    }
+        .then(data => displaySearch(data.data))
 }
 //display search
  const displaySearch = phones =>{
