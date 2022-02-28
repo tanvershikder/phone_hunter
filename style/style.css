@@ -11,3 +11,9 @@
     color: coral;
     font-weight: 700;
 }
+.card{
+    margin:20px;
+}
+.exrta{
+    display: none;
+}

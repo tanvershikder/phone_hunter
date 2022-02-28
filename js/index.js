@@ -9,8 +9,7 @@ const searchPhone = () =>{
 
     // validation chack 
     if(searchText == false){
-        errorMsg.style.display = 'inline-block';
-        // alert("write somethig to display");
+        errorMsg.style.display='inline';
     }
 
     else{
@@ -25,6 +24,7 @@ const searchPhone = () =>{
      
      const searchResult = document.getElementById('search_result');
      searchResult.textContent=''
+    //  displayPhoneDetails.textContent=''
 
      phones.forEach(phone => {
          console.log(phone);
@@ -51,7 +51,7 @@ const searchPhone = () =>{
  const loadMealDetails = phoneId =>{
      fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
      .then(res => res.json())
-     .then(data => console.log(data));
+     .then(data => loasdata(data.data));
  }
 
 // disply details
@@ -59,6 +59,22 @@ const loasdata = PhoneDetail =>{
     console.log(PhoneDetail);
 
     const displayPhoneDetails = document.getElementById('phonedetails');
+    displayPhoneDetails.textContent =''
 
-    
+    const div = document.createElement('div')
+        div.classList.add('card');
+        div.innerHTML=`
+        <img src="${PhoneDetail.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="card-titlen primary">Model : ${PhoneDetail.name}</h3>
+            <h5 class="card-text">Relase Date : ${PhoneDetail.releaseDate ? PhoneDetail.releaseDate: 'No release date found'}</h5>
+            <div class="card-text">Fetures : <br>
+                <h6>display :${PhoneDetail.mainFeatures.chipSet}</h6>
+                <h6>display :${PhoneDetail.mainFeatures.displaySize}</h6>
+                <h6>display :${PhoneDetail.mainFeatures.memory}</h6>
+            </div>
+            
+        </div>
+        `
+    displayPhoneDetails.appendChild(div);
 }
