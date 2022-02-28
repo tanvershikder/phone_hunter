@@ -36,7 +36,7 @@ const searchPhone = () =>{
             <div class="card-body">
                 <h5 class="card-title primary">Model : ${phone.phone_name}</h5>
                 <p class="card-text primary2">Brand : ${phone.brand}</p>
-                <button onClick="loadMealDetails('${phone}')"  class="buttonStyle">Details</button>
+                <button onClick="loadMealDetails('${phone.slug}')"  class="buttonStyle">Details</button>
             </div>
             
          </div>`
@@ -45,3 +45,20 @@ const searchPhone = () =>{
       
      });
  }
+
+ //call  displly details
+
+ const loadMealDetails = phoneId =>{
+     fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
+     .then(res => res.json())
+     .then(data => console.log(data));
+ }
+
+// disply details
+const loasdata = PhoneDetail =>{
+    console.log(PhoneDetail);
+
+    const displayPhoneDetails = document.getElementById('phonedetails');
+
+    
+}
