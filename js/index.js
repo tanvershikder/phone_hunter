@@ -38,6 +38,7 @@ const searchPhone = () =>{
     //  displayPhoneDetails.textContent=''
     if(phones.length == 0){
         errorMsg.style.display = 'block';
+        toggleSpiner('none')
     }
 
      else{
@@ -49,7 +50,7 @@ const searchPhone = () =>{
             div.innerHTML = `
             <div class="card h-100 mt-20 rounded">
                <img src="${phone.image}" class="card-img-top h-75" alt="...">
-               <div class="card-body">
+               <div class="card-body text-center">
                    <h5 class="card-title primary">Model : ${phone.phone_name}</h5>
                    <p class="card-text primary2">Brand : ${phone.brand}</p>
                    <button onClick="phonedetails('${phone.slug}')"  class="buttonStyle">Details</button>
@@ -87,11 +88,11 @@ const loasdata = PhoneDetail =>{
 
     const div = document.createElement('div')
     let Bluetooth = "Bluetooth : ";
-    let WLAN = ", WLAN : ";
-    let GPS = ", GPS : ";
-    let Radio = ", Radio : ";
-    let USB = ", USB : ";
-    let NFC = ", NFC : ";
+    let WLAN = "WLAN : ";
+    let GPS = "GPS : ";
+    let Radio = "Radio : ";
+    let USB = "USB : ";
+    let NFC = "NFC : ";
         div.classList.add('card');
         div.innerHTML=`
         <img src="${PhoneDetail.image}" class="card-img-top" alt="...">

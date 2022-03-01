@@ -1,11 +1,13 @@
 .buttonStyle{
-    background-color: rgb(40, 40, 224);
+    background-color: rgb(20, 13, 87);
     color: white;
     border-radius: 5px;
     border: 0px;
+    margin: 5px;
+    padding: 10px;
 }
 .primary{
-    color: blueviolet;
+    color: rgb(32, 154, 190);
 }
 .primary2{
     color: coral;
@@ -19,4 +21,7 @@
 }
 #spinner{
     display:none;
+}
+.warning{
+    color: blue;
 }
