@@ -16,8 +16,19 @@
         <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search
         </button>
     </div>
-    <div id="error" >
-        <p class="m-20 text-center exrta">No phone found</p>
+
+    <!-- spiner -->
+
+    <div id="spinner">
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+        <p id="error" class="m-20 text-center exrta">No phone found</p>
     </div>
     <!-- clicked phone details  -->
 
@@ -27,8 +38,13 @@
     
 
     <!-- display search result -->
-      <div id="search_result" class="row row-cols-1 row-cols-md-3 g-4">
+    <div id="diplyToggle">
+      <div id="search_result" class="row row-cols-1 row-cols-md-3 g-4 ">
+     
+      </div>
+  
     </div>
+  
 
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
