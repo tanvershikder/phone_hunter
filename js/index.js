@@ -82,7 +82,7 @@ const searchPhone = () =>{
 // disply details
 const loasdata = PhoneDetail =>{
     console.log(PhoneDetail);
-
+    toggleSpiner('block');
     const displayPhoneDetails = document.getElementById('phonedetails');
     displayPhoneDetails.textContent =''
 
@@ -117,5 +117,6 @@ const loasdata = PhoneDetail =>{
         </div>
         `
     displayPhoneDetails.appendChild(div);
+    toggleSpiner('none')
     document.getElementById('phonedetails').style.display ='block';
 }
