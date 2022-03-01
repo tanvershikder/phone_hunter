@@ -16,6 +16,7 @@ const searchPhone = () =>{
     const searchText = searchFild.value ;
     console.log(searchText);
     toggleSpiner('block');
+    document.getElementById('phonedetails').style.display ='none';
     document.getElementById('diplyToggle').style.display = 'none';
     //clear the value
     searchFild.value = '';
@@ -51,7 +52,7 @@ const searchPhone = () =>{
                <div class="card-body">
                    <h5 class="card-title primary">Model : ${phone.phone_name}</h5>
                    <p class="card-text primary2">Brand : ${phone.brand}</p>
-                   <button onClick="loadMealDetails('${phone.slug}')"  class="buttonStyle">Details</button>
+                   <button onClick="phonedetails('${phone.slug}')"  class="buttonStyle">Details</button>
                </div>
                
             </div>
@@ -63,6 +64,7 @@ const searchPhone = () =>{
         });
         toggleSpiner('none');
         document.getElementById('diplyToggle').style.display = 'inline';
+        document.getElementById('phonedetails').style.display ='none';
         // toggleSearchResult('block')
      }
  }
@@ -70,7 +72,7 @@ const searchPhone = () =>{
 
  //call  displly details
 
- const loadMealDetails = phoneId =>{
+ const phonedetails = phoneId =>{
      fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
      .then(res => res.json())
      .then(data => loasdata(data.data));
@@ -84,6 +86,12 @@ const loasdata = PhoneDetail =>{
     displayPhoneDetails.textContent =''
 
     const div = document.createElement('div')
+    let Bluetooth = "Bluetooth : ";
+    let WLAN = ", WLAN : ";
+    let GPS = ", GPS : ";
+    let Radio = ", Radio : ";
+    let USB = ", USB : ";
+    let NFC = ", NFC : ";
         div.classList.add('card');
         div.innerHTML=`
         <img src="${PhoneDetail.image}" class="card-img-top" alt="...">
@@ -95,8 +103,18 @@ const loasdata = PhoneDetail =>{
                 <h6>Cipset :${PhoneDetail.mainFeatures.displaySize}</h6>
                 <h6>Storage :${PhoneDetail.mainFeatures.memory}</h6>
             </div>
+            <div class="card-text"><h6>Other Fetures :</h6>
+                <ol style="list-style-type: none">
+                    <li>${PhoneDetail?.others?.Bluetooth ? Bluetooth + PhoneDetail?.others.Bluetooth : ''}</li><li> ${PhoneDetail?.others?.GPS ? GPS + PhoneDetail?.others.GPS : ''} </li> <li> ${PhoneDetail?.others?.NFC ? NFC + PhoneDetail?.others.NFC : ''}  </li> <li> ${PhoneDetail?.others?.Radio ? Radio + PhoneDetail?.others.Radio : ''}  </li> <li> ${PhoneDetail?.others?.USB ? USB + PhoneDetail?.others.USB : ''}  </li> <li>${PhoneDetail?.others?.WLAN ? WLAN + PhoneDetail?.others.WLAN : ''}</li> 
+                </ol>
+            </div>
+            <div class="card-text"><h6>Sensors : </h6>
+                <p>${PhoneDetail.mainFeatures.sensors[0]} , ${PhoneDetail.mainFeatures.sensors[1]} , ${PhoneDetail.mainFeatures.sensors[2]} ,${PhoneDetail.mainFeatures.sensors[3]} ,${PhoneDetail.mainFeatures.sensors[4]} ,${PhoneDetail.mainFeatures.sensors[5]}</p>
+            </div>
+
             
         </div>
         `
     displayPhoneDetails.appendChild(div);
+    document.getElementById('phonedetails').style.display ='block';
 }
